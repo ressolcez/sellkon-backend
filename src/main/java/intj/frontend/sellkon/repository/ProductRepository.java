@@ -12,6 +12,13 @@ public interface ProductRepository extends JpaRepository<ProductModel,Long> {
     @Query(value = "select * from products where slider = :sliderState", nativeQuery = true)
     List<ProductModel> getSliderContent(Integer sliderState);
 
-    @Query(value = "select * from products order by Rand() asc limit 3", nativeQuery = true)
+    @Query(value = "select * from products order by Rand() asc limit 20", nativeQuery = true)
     List<ProductModel> getRecommendedProducts();
+
+    @Query(value = "select * from products where special_offer = :SpecialOfferState", nativeQuery = true)
+    List<ProductModel> getSpecialOfferContent(Integer SpecialOfferState);
+
+    @Query(value = "select * from products where category_id = 1", nativeQuery = true)
+    List<ProductModel> getCategory1();
+
 }
