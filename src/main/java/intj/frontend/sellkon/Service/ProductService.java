@@ -32,8 +32,8 @@ public class ProductService {
         return productRepository.getRecommendedProducts();
     }
 
-    public List<ProductModel> getCategory1(){
-        return productRepository.getCategory1();
+    public List<ProductModel> getCategory1(Long categoryId){
+        return productRepository.getProductFromCategory(categoryId);
     }
 
 

@@ -18,7 +18,7 @@ public interface ProductRepository extends JpaRepository<ProductModel,Long> {
     @Query(value = "select * from products where special_offer = :SpecialOfferState", nativeQuery = true)
     List<ProductModel> getSpecialOfferContent(Integer SpecialOfferState);
 
-    @Query(value = "select * from products where category_id = 1", nativeQuery = true)
-    List<ProductModel> getCategory1();
+    @Query(value = "select * from products where category_id = :categoryId", nativeQuery = true)
+    List<ProductModel> getProductFromCategory(Long categoryId);
 
 }
