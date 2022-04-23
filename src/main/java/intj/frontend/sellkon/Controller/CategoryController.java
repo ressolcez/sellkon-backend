@@ -3,10 +3,9 @@ package intj.frontend.sellkon.Controller;
 import intj.frontend.sellkon.Service.CategoryService;
 import intj.frontend.sellkon.model.CategoryModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +18,11 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping("/AllCategory")
-    public List<CategoryModel> getCategory(){
-        return categoryService.getCategory();
-    }
+    public List<CategoryModel> getAllCategory(){return categoryService.getAllCategory();}
 
+    @PostMapping
+    public CategoryModel addCategory(@RequestBody CategoryModel categoryDetails) {return categoryService.addCategory(categoryDetails);}
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable long id) {return categoryService.deleteCategory(id);}
 }

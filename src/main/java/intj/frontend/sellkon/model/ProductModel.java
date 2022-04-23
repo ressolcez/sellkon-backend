@@ -22,7 +22,7 @@ public class ProductModel {
     private String shortName;
 
     @Column(name = "Price")
-    private int price;
+    private double price;
 
     @Column(name = "Slider")
     private Boolean slider;
@@ -31,7 +31,7 @@ public class ProductModel {
     private Boolean specialOffer;
 
     @Column(name = "NewPrice")
-    private int newPrice;
+    private double newPrice;
 
     @Column(name = "ShortDesc")
     private String shortDesc;
@@ -45,7 +45,7 @@ public class ProductModel {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private CategoryModel categoryModel;
 
 }
