@@ -46,6 +46,11 @@ public class ProductController {
         return productService.getRecommendedProducts();
     }
 
+    @GetMapping("/price/{categoryId}/{minPrice}/{maxPrice}")
+    public List<ProductModel> getProductsFromCategoryFilteredByPrice(@PathVariable long categoryId,@PathVariable long minPrice,@PathVariable long maxPrice){
+        return productService.getProductsFromCategoryFilteredByPrice(categoryId,minPrice,maxPrice);
+    }
+
     @GetMapping("/SpecialOffer")
     public List<ProductModel> getSpecialOfferContent(){
         return productService.getSpecialOfferContent();

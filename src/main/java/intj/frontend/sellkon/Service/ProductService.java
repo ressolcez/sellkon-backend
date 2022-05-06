@@ -32,6 +32,11 @@ public class ProductService {
         return productRepository.getRecommendedProducts();
     }
 
+    public List<ProductModel> getProductsFromCategoryFilteredByPrice(long categoryId,long minPrice,long maxPrice){
+        return productRepository.getProductsFromCategoryFilteredByPrice(categoryId,minPrice,maxPrice);
+    }
+
+
     public List<ProductModel> getCategory1(Long categoryId){
         return productRepository.getProductFromCategory(categoryId);
     }
@@ -80,11 +85,7 @@ public class ProductService {
             updateProduct.setCategoryModel(category);
             return productRepository.save(updateProduct);
         }).orElseThrow(() -> new RuntimeException("Fail "));
-
         return ResponseEntity.ok(updateProduct);
     }
-
-
-
 
 }
