@@ -1,9 +1,7 @@
 package intj.frontend.sellkon;
 
-import intj.frontend.sellkon.model.CategoryModel;
-import intj.frontend.sellkon.model.ProductModel;
-import intj.frontend.sellkon.repository.CategoryRespository;
-import intj.frontend.sellkon.repository.ProductRepository;
+import intj.frontend.sellkon.model.*;
+import intj.frontend.sellkon.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,10 +17,20 @@ public class SellkonApplication implements CommandLineRunner{
 	}
 
 	@Autowired
-	private ProductRepository productRepository;
+	public ProductRepository productRepository;
 
 	@Autowired
-	private CategoryRespository categoryRespository;
+	public CategoryRespository categoryRespository;
+
+    @Autowired
+	public ComputerDetailsRepository computerDetailsRepository;
+
+	@Autowired
+	public OpinionsRepository opinionsRepository;
+
+	@Autowired
+	public LaptopDetailsRepository laptopDetailsRepository;
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -72,6 +80,42 @@ public class SellkonApplication implements CommandLineRunner{
 		categoryModel9.setImage("https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHRhYmxldHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
 		categoryRespository.save(categoryModel9);
 
+        ComputerDetailsModel computerDetailsModel1 = new ComputerDetailsModel();
+        computerDetailsModel1.setProcessor("Intel Core i7-11700F (8 rdzeni, od 2.50 GHz do 4.90 GHz, 16 MB cache)");
+		computerDetailsModel1.setChipset("Intel B560");
+		computerDetailsModel1.setRAM("16GB");
+		computerDetailsModel1.setGrapic_card("NVIDIA GeForce RTX 3060 Ti");
+		computerDetailsModel1.setGrapic_card_max_mem("8192 MB GDDR6 (pamięć własna)");
+		computerDetailsModel1.setOptical_drives("brak");
+		computerDetailsModel1.setSound("Zintegrowana karta dźwiękowa");
+		computerDetailsModel1.setConnection("Wi-Fi 6 (802.11 a/b/g/n/ac/ax)");
+		computerDetailsModel1.setCharger("600 W");
+		computerDetailsModel1.setCasing_illum("Wielokolorowe (ARGB)");
+		computerDetailsModel1.setOperating_system("Microsoft Windows 11 Home");
+		computerDetailsModel1.setHeight("488 mm");
+		computerDetailsModel1.setWidth("216 mm");
+		computerDetailsModel1.setDepth("420 mm");
+		computerDetailsRepository.save(computerDetailsModel1);
+
+		LaptopDetailsModel laptopDetailsModel1 = new LaptopDetailsModel();
+		laptopDetailsModel1.setProcessor("Intel Core i5-11400H (6 rdzeni, 12 wątków, 2.70-4.50 GHz, 12MB cache)");
+		laptopDetailsModel1.setChipset("Intel HM570");
+		laptopDetailsModel1.setRAM("16 GB (DDR4, 3200MHz)");
+		laptopDetailsModel1.setGrapic_card("NVIDIA GeForce RTX 3050");
+		laptopDetailsModel1.setGrapic_card_max_mem("4 GB GDDR6");
+		laptopDetailsModel1.setOptical_drives("brak");
+		laptopDetailsModel1.setSound("Zintegrowana karta dźwiękowa");
+		laptopDetailsModel1.setConnection("Wi-Fi 6 (802.11 a/b/g/n/ac/ax)");
+		laptopDetailsModel1.setCharger("600 W");
+		laptopDetailsModel1.setOperating_system("Microsoft Windows 11 Home");
+		laptopDetailsModel1.setHeight("488 mm");
+		laptopDetailsModel1.setWidth("216 mm");
+		laptopDetailsModel1.setDepth("420 mm");
+		laptopDetailsModel1.setEkran_res("1920 x 1080 (Full HD)");
+		laptopDetailsModel1.setEkran_type("Matowy, LED, WVA");
+		laptopDetailsModel1.setMatrix_britn("250 cd/m²");
+		laptopDetailsModel1.setScreen_diag("15,6");
+		laptopDetailsRepository.save(laptopDetailsModel1);
 
 		ProductModel productModel = new ProductModel();
 		productModel.setFullDescription("Wydajny, elegancki, stworzony z myślą o graczach – laptop Dell Inspiron G15 wprowadzi Cię na wyższy poziom rozgrywek e-sportowych. Nowoczesny, potężny procesor wspomagany przez ultraszybką pamięć i kartę graficzną pozwoli Ci wyzwolić moc, którą przekujesz na zwycięstwa w wirtualnych bataliach. Ciesz się nieprzeciętną wydajnością i wejdź na wyższy level grania, dzięki niezwykłym technologiom zastosowanym w laptopie Dell Inspiron G15.");
@@ -84,6 +128,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel.setSlider(Boolean.TRUE);
 		productModel.setSpecialOffer(Boolean.FALSE);
 		productModel.setCategoryModel(categoryModel2);
+        productModel.setComputerDetailsModel(null);
+		productModel.setLaptopDetailsModel(laptopDetailsModel1);
 		productRepository.save(productModel);
 
 		ProductModel productModel2 = new ProductModel();
@@ -97,6 +143,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel2.setSlider(Boolean.FALSE);
 		productModel2.setSpecialOffer(Boolean.TRUE);
 		productModel2.setCategoryModel(categoryModel2);
+        productModel2.setComputerDetailsModel(null);
+		productModel2.setLaptopDetailsModel(laptopDetailsModel1);
 		productRepository.save(productModel2);
 
 		ProductModel productModel3 = new ProductModel();
@@ -110,6 +158,7 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel3.setSlider(Boolean.FALSE);
 		productModel3.setSpecialOffer(Boolean.FALSE);
 		productModel3.setCategoryModel(categoryModel4);
+        productModel3.setComputerDetailsModel(null);
 		productRepository.save(productModel3);
 
 		ProductModel productModel4 = new ProductModel();
@@ -123,6 +172,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel4.setSlider(Boolean.TRUE);
 		productModel4.setSpecialOffer(Boolean.FALSE);
 		productModel4.setCategoryModel(categoryModel);
+        productModel4.setComputerDetailsModel(computerDetailsModel1);
+
 		productRepository.save(productModel4);
 
 		ProductModel productModel5 = new ProductModel();
@@ -136,6 +187,7 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel5.setSlider(Boolean.TRUE);
 		productModel5.setSpecialOffer(Boolean.FALSE);
 		productModel5.setCategoryModel(categoryModel3);
+        productModel5.setComputerDetailsModel(null);
 		productRepository.save(productModel5);
 
 		ProductModel productModel6 = new ProductModel();
@@ -149,7 +201,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel6.setSlider(Boolean.FALSE);
 		productModel6.setSpecialOffer(Boolean.FALSE);
 		productModel6.setCategoryModel(categoryModel);
-		productRepository.save(productModel6);
+        productModel6.setComputerDetailsModel(computerDetailsModel1);
+        productRepository.save(productModel6);
 
 		ProductModel productModel7 = new ProductModel();
 		productModel7.setFullDescription("");
@@ -162,7 +215,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel7.setSlider(Boolean.FALSE);
 		productModel7.setSpecialOffer(Boolean.FALSE);
 		productModel7.setCategoryModel(categoryModel);
-		productRepository.save(productModel7);
+        productModel7.setComputerDetailsModel(computerDetailsModel1);
+        productRepository.save(productModel7);
 
 		ProductModel productModel8 = new ProductModel();
 		productModel8.setFullDescription("");
@@ -175,7 +229,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel8.setSlider(Boolean.FALSE);
 		productModel8.setSpecialOffer(Boolean.TRUE);
 		productModel8.setCategoryModel(categoryModel);
-		productRepository.save(productModel8);
+        productModel8.setComputerDetailsModel(computerDetailsModel1);
+        productRepository.save(productModel8);
 
 		ProductModel productModel9 = new ProductModel();
 		productModel9.setFullDescription("");
@@ -188,7 +243,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel9.setSlider(Boolean.FALSE);
 		productModel9.setSpecialOffer(Boolean.TRUE);
 		productModel9.setCategoryModel(categoryModel);
-		productRepository.save(productModel9);
+        productModel9.setComputerDetailsModel(computerDetailsModel1);
+        productRepository.save(productModel9);
 
 		ProductModel productModel10 = new ProductModel();
 		productModel10.setFullDescription("");
@@ -201,7 +257,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel10.setSlider(Boolean.FALSE);
 		productModel10.setSpecialOffer(Boolean.TRUE);
 		productModel10.setCategoryModel(categoryModel);
-		productRepository.save(productModel10);
+        productModel10.setComputerDetailsModel(computerDetailsModel1);
+        productRepository.save(productModel10);
 
 		ProductModel productModel11 = new ProductModel();
 		productModel11.setFullDescription("");
@@ -214,7 +271,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel11.setSlider(Boolean.FALSE);
 		productModel11.setSpecialOffer(Boolean.TRUE);
 		productModel11.setCategoryModel(categoryModel4);
-		productRepository.save(productModel11);
+        productModel11.setComputerDetailsModel(null);
+        productRepository.save(productModel11);
 
 		ProductModel productModel12 = new ProductModel();
 		productModel12.setFullDescription("");
@@ -227,7 +285,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel12.setSlider(Boolean.FALSE);
 		productModel12.setSpecialOffer(Boolean.FALSE);
 		productModel12.setCategoryModel(categoryModel4);
-		productRepository.save(productModel12);
+        productModel12.setComputerDetailsModel(null);
+        productRepository.save(productModel12);
 
 		ProductModel productModel13 = new ProductModel();
 		productModel13.setFullDescription("");
@@ -240,7 +299,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel13.setSlider(Boolean.FALSE);
 		productModel13.setSpecialOffer(Boolean.FALSE);
 		productModel13.setCategoryModel(categoryModel4);
-		productRepository.save(productModel13);
+        productModel13.setComputerDetailsModel(null);
+        productRepository.save(productModel13);
 
 		ProductModel productModel14 = new ProductModel();
 		productModel14.setFullDescription("");
@@ -253,7 +313,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel14.setSlider(Boolean.FALSE);
 		productModel14.setSpecialOffer(Boolean.FALSE);
 		productModel14.setCategoryModel(categoryModel4);
-		productRepository.save(productModel14);
+        productModel14.setComputerDetailsModel(null);
+        productRepository.save(productModel14);
 
 		ProductModel productModel15 = new ProductModel();
 		productModel15.setFullDescription("");
@@ -266,7 +327,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel15.setSlider(Boolean.FALSE);
 		productModel15.setSpecialOffer(Boolean.TRUE);
 		productModel15.setCategoryModel(categoryModel4);
-		productRepository.save(productModel15);
+        productModel15.setComputerDetailsModel(null);
+        productRepository.save(productModel15);
 
 		ProductModel productModel16 = new ProductModel();
 		productModel16.setFullDescription("");
@@ -279,6 +341,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel16.setSlider(Boolean.FALSE);
 		productModel16.setSpecialOffer(Boolean.TRUE);
 		productModel16.setCategoryModel(categoryModel2);
+        productModel16.setComputerDetailsModel(null);
+		productModel16.setLaptopDetailsModel(laptopDetailsModel1);
 		productRepository.save(productModel16);
 
 		ProductModel productModel17 = new ProductModel();
@@ -292,6 +356,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel17.setSlider(Boolean.FALSE);
 		productModel17.setSpecialOffer(Boolean.FALSE);
 		productModel17.setCategoryModel(categoryModel2);
+        productModel17.setComputerDetailsModel(null);
+		productModel17.setLaptopDetailsModel(laptopDetailsModel1);
 		productRepository.save(productModel17);
 
 		ProductModel productModel18 = new ProductModel();
@@ -305,6 +371,8 @@ public class SellkonApplication implements CommandLineRunner{
 		productModel18.setSlider(Boolean.FALSE);
 		productModel18.setSpecialOffer(Boolean.FALSE);
 		productModel18.setCategoryModel(categoryModel2);
+        productModel18.setComputerDetailsModel(null);
+		productModel18.setLaptopDetailsModel(laptopDetailsModel1);
 		productRepository.save(productModel18);
 
         ProductModel productModel19 = new ProductModel();
@@ -318,6 +386,7 @@ public class SellkonApplication implements CommandLineRunner{
         productModel19.setSlider(Boolean.FALSE);
         productModel19.setSpecialOffer(Boolean.FALSE);
         productModel19.setCategoryModel(categoryModel5);
+        productModel19.setComputerDetailsModel(null);
         productRepository.save(productModel19);
 
         ProductModel productModel20 = new ProductModel();
@@ -331,7 +400,29 @@ public class SellkonApplication implements CommandLineRunner{
         productModel20.setSlider(Boolean.FALSE);
         productModel20.setSpecialOffer(Boolean.FALSE);
         productModel20.setCategoryModel(categoryModel5);
+        productModel20.setComputerDetailsModel(null);
         productRepository.save(productModel20);
+
+		OpinionsModel opinionsModel = new OpinionsModel();
+		opinionsModel.setProductModel(productModel);
+		opinionsModel.setUser_id(1L);
+		opinionsModel.setComment("Fajny Laptop");
+		opinionsModel.setRating(5.0);
+		opinionsRepository.save(opinionsModel);
+
+		OpinionsModel opinionsModel2 = new OpinionsModel();
+		opinionsModel2.setProductModel(productModel);
+		opinionsModel2.setUser_id(1L);
+		opinionsModel2.setComment("Słaby Laptop");
+		opinionsModel2.setRating(1.0);
+		opinionsRepository.save(opinionsModel2);
+
+		OpinionsModel opinionsModel3 = new OpinionsModel();
+		opinionsModel3.setProductModel(productModel2);
+		opinionsModel3.setUser_id(1L);
+		opinionsModel3.setComment("Słaby Laptop");
+		opinionsModel3.setRating(1.0);
+		opinionsRepository.save(opinionsModel3);
 
 	}
 }

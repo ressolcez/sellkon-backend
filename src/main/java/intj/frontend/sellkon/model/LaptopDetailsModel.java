@@ -1,4 +1,5 @@
 package intj.frontend.sellkon.model;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,11 +8,12 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "ComputerDetails")
-public class ComputerDetailsModel {
+@Table(name = "LaptopDetails")
+public class LaptopDetailsModel {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long ComputerDetails_id;
+    private Long LaptopDetails_id;
 
     @Column(name = "procesor")
     private String processor;
@@ -40,9 +42,6 @@ public class ComputerDetailsModel {
     @Column(name = "Zasilacz")
     private String charger;
 
-    @Column(name = "Podswietlenie_obudowy")
-    private String casing_illum;
-
     @Column(name = "System_operacyjny")
     private String operating_system;
 
@@ -54,6 +53,17 @@ public class ComputerDetailsModel {
 
     @Column(name = "Glebokosc")
     private String depth;
+
+    @Column(name = "typ_ekranu")
+    private String ekran_type;
+
+    @Column(name = "przekatna_ekranu")
+    private String screen_diag;
+
+    @Column(name = "rozdzielczosc_ekranu")
+    private String ekran_res;
+
+    @Column(name = "jasność_matrycy")
+    private String matrix_britn;
+
 }
-
-

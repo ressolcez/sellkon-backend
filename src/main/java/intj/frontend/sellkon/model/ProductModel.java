@@ -48,4 +48,12 @@ public class ProductModel {
     @JoinColumn(name = "category_id")
     private CategoryModel categoryModel;
 
+    @OneToOne
+    @JoinColumn(name = "ComputerDetails_id")
+    private ComputerDetailsModel computerDetailsModel;
+
+    @OneToOne
+    @JoinColumn(name = "LaptopDetails_id")
+    private LaptopDetailsModel laptopDetailsModel;
+
 }
