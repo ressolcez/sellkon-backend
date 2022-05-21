@@ -12,7 +12,7 @@ public class ProductModel {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long product_id;
+    private Long id;
 
     @Column(name = "ProductName")
     @Lob
